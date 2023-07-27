@@ -1,0 +1,25 @@
+
+  <h2>Crie sua Conta!</h2>
+  <form action="post" (submit)="register()">
+    <fieldset>
+      <legend>Cadastro</legend>
+      <div class="form-group">
+        <label for="usuario">Usuário</label>
+        <input type="text" class="form-control" id="username" required [(ngModel)]="usuario" name="usuario">
+      </div>
+      
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="password" class="form-control" id="senha" required [(ngModel)]="senha" name="senha">
+      </div>
+    
+      <div class="form-group">
+        <label for="comfirmar_senha">Confirmar senha</label>
+        <input type="password" class="form-control" id="confirmar_senha" required [(ngModel)]="confirmar_senha" name="confirmar_senha">
+      </div>
+      
+      
+      <button class="btn btn-secondary" type="submit">Register</button>
+      <button type="reset">Resetar</button>
+      <p>Caso já tenha login,<a [routerLink]="['/login']">clique aqui</a></p>
+    </fieldset>

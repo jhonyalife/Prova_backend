@@ -1,0 +1,33 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    border: 1px solid black;
+    padding: 10px;
+  }
+  
+  th {
+    background-color: #ddd;
+  }
+  
+  td {
+    text-align: center;
+  }
+  
+  .btn {
+    margin-right: 10px;
+  }
+  
+  .btn-primary {
+    color: white;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-danger {
+    color: white;
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
