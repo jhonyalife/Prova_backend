@@ -1,6 +1,8 @@
 <h2>Product List</h2>
 
-<a routerLink="/products/create" class="btn btn-success">Adicionar Produto</a>
+<p><a routerLink="/products/create" class="btn btn-success">Adicionar Produto</a> | 
+<a routerLink="/login">Realizar login</a> |
+<a routerLink="/register">Realizar registro</a></p>
 <br>
 <br>
 
@@ -8,7 +10,6 @@
   <thead>
     <tr>
       <th>id</th>
-      <th>Imagem</th>
       <th>Name</th>
       <th>Description</th>
       <th>Price</th>
@@ -18,7 +19,6 @@
   <tbody>
     <tr *ngFor="let product of products">
       <td>{{product.id}}</td>
-      <td>{{product.image }}</td>
       <td>{{ product.name }}</td>
       <td>{{ product.description }}</td>
       <td>{{ product.price }}</td>

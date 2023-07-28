@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../api.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-form',
@@ -14,7 +15,8 @@ export class ProductFormComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -22,39 +24,44 @@ export class ProductFormComponent implements OnInit {
     if (productId) {
       this.isEditMode = true;
       this.loadProduct(productId);
-    } 
+    }
   }
 
   private loadProduct(id: string): void {
-    this.apiService.getProduct(id).subscribe(
-      (response: any) => {
+    this.apiService.getProduct(id).subscribe({
+      next: (response) => {
         this.product = response[0];
       },
-      (error: any) => {
+      error: (error) => {
         console.error('Error:', error);
       }
+    }
     );
   }
 
   public saveProduct(): void {
     if (this.isEditMode) {
       this.apiService.updateProduct(this.product.id, this.product).subscribe({
-        next: () => {
+        next: (response) => {
+          this.toastr.success('Sucesso!', response.message)
           this.router.navigate(['/products']);
-        },
+        },  
         error: (error) => {
           console.error('Error:', error);
         }
       }
       );
     } else {
-      this.apiService.createProduct(this.product).subscribe(
-        () => {
+      this.apiService.createProduct(this.product).subscribe({
+        next: (response) => {
+          this.toastr.success('Sucesso!', response.message)
           this.router.navigate(['/products']);
         },
-        (error: any) => {
+        error: (error) => {
+          this.toastr.error('Sucesso!', error.message)
           console.error('Error:', error);
         }
+      }
       );
     }
   }
